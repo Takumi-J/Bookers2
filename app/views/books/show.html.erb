@@ -1,0 +1,39 @@
+<div class="container"> 
+  <div class="row">     
+  
+
+<%= render 'books/hidari', user: @user, book:@book_new %>
+
+<div class="col-md-8 offset-md-1">
+
+    <p id="notice"></p>
+
+<h1>Book detail</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %>
+        <br><%=link_to"#{@user.name}","/users/#{@user.id}"%>
+        </td>
+        <td><%=link_to"#{@book.title}","/books/#{@book.id}"%></td>
+        <td><%= @book.body %></td>
+        <% if @book.user == current_user %>
+        <td><%=link_to"Edit","/books/#{@book.id}/edit"%></td>
+        <td><%=link_to "Destroy","/books/#{@book.id}", method: :delete, "data-confirm" => "Are you sure?" %></td>
+        <% end %>
+      </tr>
+  </tbody>
+</table>
+
+</div>
+</div>
+  
