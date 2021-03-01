@@ -15,23 +15,69 @@
        <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>Bookers</span></a>
+      
+  <%= link_to "/", method: :get do %>
+    <i class="navbar-brand"></i><span>Bookers</span>
+
+  
+    
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+        <% end %>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
 
     <% if user_signed_in? %>
-    <li><a class="fas fa-home nav-link text-light" href="/users/<%= current_user.id%>"> Home</a></li>
-          <li><a class="fas fa-users nav-link text-light" href="/users"> Users</a></li>
-          <li><a class="fas fa-book-open nav-link text-light" href="/books"> Books</a></li>
-          <li><a class="fas fa-sign-out-alt nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>
+    <li>
+      <%= link_to "/users/#{current_user.id}", method: :get do %>
+        <i class="fas fa-home nav-link text-light"></i>Home
+      <% end %>
+     </li>
+     
+    <li>
+      <%= link_to "/users", method: :get do %>
+        <i class="fas fa-users nav-link text-light"></i>Users
+      <% end %>
+    </li>
+     
+    <li>
+      <%= link_to "/books", method: :get do %>
+        <i class="fas fa-book-open nav-link text-light"></i>Books
+      <% end %>
+    </li>
+    
+    <li>
+      <%= link_to "/users/sign_out", method: :delete do %>
+        <i class="fas fa-sign-out-alt nav-link text-light" rel="nofollow"></i>logout
+      <% end %>
+      
+      </li>
+      
     <% else %>
-    <li><a class="fas fa-home nav-link text-light" href="/"> Home</a></li>
-          <a class="fas fa-link nav-link text-light" href="/home/about" aria-hidden="true"> About</a>
-          <li><a class="fas fa-user-plus nav-link text-light" href="/users/sign_up"> sign up</a></li>
-          <li><a class="fas fa-sign-in-alt nav-link text-light" href="/users/sign_in"> login</a></li>
+    <li>
+      <%= link_to "/", method: :get do %>
+        <i class="fas fa-home nav-link text-light"></i>Home
+      <% end %>
+  </li>
+  
+  <li>
+      <%= link_to "/home/about", method: :get do %>
+        <i class="fas fa-link nav-link text-light"></i>About
+      <% end %>
+  </li>
+          
+  <li>
+      <%= link_to "/users/sign_up", method: :get do %>
+        <i class="fas fa-user-plus nav-link text-light"></i>sign up
+      <% end %>
+    </li>
+  <li>
+      <%= link_to "/users/sign_in", method: :get do %>
+        <i class="fas fa-sign-in-alt nav-link text-light"></i>login
+      <% end %>
+    </li>
+    
     <% end %>
         </ul>
       </div>

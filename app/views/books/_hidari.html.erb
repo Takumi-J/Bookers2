@@ -6,11 +6,11 @@
   <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
   <h4 class="profile-name">name   <%= user.name %></h4>
   <h4 class="Introduction">Introduction   <%= user.introduction %></h4>
-
-
-
-   <a class="btn btn-outline-secondary btn-block fas fa-user-cog" href="/users/<%=user.id%>/edit"></a>
- 
+  
+  <%= link_to "/users/#{user.id}/edit", method: :get do %>
+    <i class="btn btn-outline-secondary btn-block fas fa-user-cog"></i>
+  <% end %>
+  
 </div>
 <!-- ユーザー画像　終わり -->
 
